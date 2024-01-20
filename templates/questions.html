@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+
+{% block title%}
+Question {{idx}}
+{% endblock %}
+
+{% block content%}
+{% for msg in get_flashed_messages()%}
+<p>{{msg}}</p>
+{%endfor %}
+<h1>Question {{idx + 1}}</h1>
+<p>{{question}}</p>
+<form action="/questions/next" method="POST">
+
+    {%for choice in choices%}
+    <label for="choice">{{choice}}
+        <input type="radio" name="choice" id="" value="{{choice}}">
+    </label>
+    {%endfor%}
+    <input type="hidden" name="idx" id="" value="{{idx}}">
+    <button>Next Question</button>
+</form>
+
+{% endblock %}
